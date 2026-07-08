@@ -1,0 +1,11 @@
+node_modules/
+dist/
+output/
+
+# Secrets — nunca commitear credenciales de Figma
+.env
+.env.*
+!.env.example
+
+*.log
+.DS_Store
