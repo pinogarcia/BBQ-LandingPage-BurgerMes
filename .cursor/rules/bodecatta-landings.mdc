@@ -1,0 +1,41 @@
+---
+description: Reglas del repo de landings Bodecatta (Oxygen, briefs, design system)
+globs:
+  - landings/**/*
+  - design-system/**/*
+  - contracts/**/*
+  - shared/**/*
+alwaysApply: true
+---
+
+# Bodecatta landings
+
+Skills canónicas: `.agents/skills/` (portables). Ver también `AGENTS.md`.
+
+## Flujo
+
+1. Skill `nueva-landing` — crea `landings/{slug}/` + briefs demo (`BD_DEMO`). No código.
+2. Humano aprueba wireframe, llena copy y assets (assets pueden quedar missing).
+3. Skill `crear-landing` — genera `oxygen/` + `preview/` solo si no hay `BD_DEMO` en README/wireframe/copy.
+
+## Design system
+
+- Canónico: `design-system/tokens.css` (+ docs en esa carpeta).
+- Landings nunca editan el global; overrides solo en root scoped o `overrides.md`.
+- Oxygen embebe tokens (no hay import del repo).
+
+## Entrega Oxygen
+
+- `markup.php` (HTML + PHP opcional juntos), `styles.css`, `app.js`.
+- CSS/JS scoped al `#bd-{slug}`.
+- Referencia: `landings/smash-burger-mex/oxygen/`.
+
+## Assets
+
+- Por landing: `landings/{slug}/assets/{images,video}/`
+- Compartidos: `shared/assets/{logos,icons}/`
+- Faltantes no bloquean el build → shared o placeholder.
+
+## Contratos
+
+Leer `contracts/*.md` antes de scaffold o generación.

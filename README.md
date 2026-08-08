@@ -1,71 +1,81 @@
-# Figma Extractor
+# Bodecatta Landings
 
-Extrae *toda* la información posible de un proyecto de Figma vía REST API y la transforma en un **design system** portable + un **contexto de diseño** que sirve de guía para generar landings.
+Kit para generar **landing pages de Bodecatta BBQ** listas para el widget **Code Block de Oxygen** (WordPress): un documento HTML/PHP + CSS + JS, con design system compartido y un flujo brief → código.
 
-## Qué produce
+## Cómo funciona
 
 ```
-output/
-  raw/
-    file.json                 # árbol completo del archivo (auditable)
-    variables.json            # solo si el plan es Enterprise
-  design-system/
-    design-tokens.json        # W3C DTCG: color, typography, spacing, shadow, radius
-    tokens.css                # CSS custom properties (+ dark mode si hay modes)
-    component-catalog.json    # componentes normalizados por página
-  assets/
-    components/*.svg *.png    # render de cada componente / set
-    icons/*.svg               # iconos detectados
-    screens/*.png             # frames de primer nivel (landings existentes)
-  design-context.json         # bundle consolidado para el generador de landings
-  manifest.json               # índice + counts + flags (variablesApiUsed)
+nueva-landing  →  wireframe + copy + assets  →  crear-landing  →  pegar en Oxygen
 ```
 
-## Uso
+1. **Skill `nueva-landing`** — crea `landings/{slug}/` con briefs demo (incluye prompts para armar wireframe/copy en otro chat).
+2. Apruebas wireframe, escribes copy, listas/recursos (las imágenes faltantes **no** bloquean).
+3. **Skill `crear-landing`** — si el brief ya no tiene `BD_DEMO`, genera `oxygen/` (`markup.php`, `styles.css`, `app.js`) y `preview/`.
 
-1. Requisitos:
-   - Node.js 20 o superior.
-2. Instala dependencias:
-   ```bash
-   npm install
-   ```
-3. Copia el archivo de entorno de ejemplo:
-   ```bash
-   cp .env.example .env
-   ```
-4. Abre `.env` y completa estas variables:
-   - `FIGMA_TOKEN`: Personal Access Token de Figma.
-   - `FIGMA_FILE_KEY`: clave del archivo de Figma en la URL `figma.com/design/<FILE_KEY>/...`.
-5. Ejecuta el extractor:
-   ```bash
-   npm run extract
-   ```
+Documentación del flujo: [`docs/workflow.md`](docs/workflow.md) · inicio rápido: [`docs/getting-started.md`](docs/getting-started.md) · agentes: [`AGENTS.md`](AGENTS.md).
 
-El resultado se genera en la carpeta `output/`.
+## Estructura
 
-> Nota: no subas tu `.env` con credenciales. El archivo está ignorado por `.gitignore`.
+| Ruta | Rol |
+|------|-----|
+| [`landings/`](landings/) | Una carpeta por campaña |
+| [`design-system/`](design-system/) | Tokens y docs de marca (**global**, no se edita por landing) |
+| [`shared/assets/`](shared/assets/) | Logos / iconos compartidos |
+| [`contracts/`](contracts/) | Contratos de brief, readiness, Oxygen y assets |
+| [`.agents/skills/`](.agents/skills/) | Skills portables (`nueva-landing`, `crear-landing`) |
+| [`AGENTS.md`](AGENTS.md) | Instrucciones para cualquier agente/IDE |
+| [`docs/`](docs/) | Guías humanas |
+| [`src/`](src/) | Extractor opcional de Figma |
 
-### Scripts disponibles
+Detalle: [`docs/folder-structure.md`](docs/folder-structure.md).
 
-- `npm run extract` — ejecuta el extractor principal.
-- `npm run build` — compila TypeScript.
-- `npm run typecheck` — verifica tipos sin generar archivos.
+## Skills (Cursor · Codex · VS Code)
 
-### Flags
+Canónicas en [`.agents/skills/`](.agents/skills/) (estándar Agent Skills). Symlinks a `.cursor/skills`, `.codex/skills` y `.github/skills` para que cada IDE las descubra sin duplicar archivos.
 
-- `--no-assets` — omite el render/descarga de imágenes.
-- `--raw-only` — solo descarga `output/raw/file.json` y sale.
-- `--file-key=<KEY>` — sobreescribe el file key definido en `.env`.
+### `nueva-landing`
 
-## Estrategia de tokens
+- **Input:** nombre de la landing  
+- **Hace:** carpeta + `README`, `wireframe`, `copy`, `assets`, `overrides` (demo con `BD_DEMO` + prompt sugerido) + `assets/images|video`  
+- **No hace:** código  
 
-El plan de Figma determina la fuente de los tokens:
+### `crear-landing`
 
-- **Enterprise** → usa la **Variables API** (`/variables/local`): tokens reales con modes (light/dark) y alias resueltos.
-- **Pro / Org / desconocido** → cae automáticamente a los **Styles** del archivo (colores, tipografías, efectos) resueltos recorriendo el árbol de nodos.
+- **Input:** slug o path (`smash-burger-mex`)  
+- **Hace:** valida readiness → genera Oxygen + preview  
+- **Aborta si:** no hay carpeta, faltan MD, o sigue el contenido demo (`BD_DEMO`)  
+- **No aborta por:** imágenes faltantes (usa `shared/` o placeholders)
 
-El campo `variablesApiUsed` en `manifest.json` indica qué fuente se usó. El pipeline nunca falla por falta de acceso a Variables.
+## Design system
 
-## Cómo encaja en el pipeline de landings
+Fuente de verdad: [`design-system/tokens.css`](design-system/tokens.css)  
+Colores, tipografía (Bebas Neue + Hanken Grotesk), componentes y motion: carpeta [`design-system/`](design-system/).
 
-`design-context.json` es el artefacto puente: contiene paleta, tipografía, escalas, sombras, el inventario de componentes (con ruta a su render) y las pantallas existentes. La siguiente etapa lo inyecta como guía de diseño obligatoria junto al wireframe Mermaid para generar landings coherentes con el sitio actual.
+Las landings pueden sobreescribir tokens **localmente** (`overrides.md` → root CSS). Nunca editar el global desde una campaña.
+
+Conexión Figma: [`design-system/figma.md`](design-system/figma.md).
+
+## Ejemplo de referencia
+
+[`landings/smash-burger-mex/`](landings/smash-burger-mex/) — brief real + código Oxygen de referencia (Combo Smash $148).
+
+## Oxygen
+
+Ver [`docs/oxygen-workflow.md`](docs/oxygen-workflow.md) y [`contracts/oxygen.contract.md`](contracts/oxygen.contract.md).
+
+## Extractor Figma (opcional)
+
+```bash
+npm install
+cp .env.example .env   # FIGMA_TOKEN + FIGMA_FILE_KEY
+npm run extract
+```
+
+La salida en `output/` es una **propuesta**; el canónico del repo sigue siendo `design-system/`.
+
+## Contratos
+
+- [`contracts/brief.contract.md`](contracts/brief.contract.md)
+- [`contracts/readiness.contract.md`](contracts/readiness.contract.md)
+- [`contracts/oxygen.contract.md`](contracts/oxygen.contract.md)
+- [`contracts/assets.contract.md`](contracts/assets.contract.md)

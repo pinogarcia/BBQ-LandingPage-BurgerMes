@@ -1,0 +1,49 @@
+/* =============================================================================
+   Bodecatta BBQ — Design System tokens (FUENTE GLOBAL)
+   No editar desde una landing. Overrides van en landings/{slug}/overrides.md
+   y se aplican solo en el root scoped de esa landing.
+   ============================================================================= */
+
+:root {
+  /* Color */
+  --bg: #0e1317;
+  --bg-elev: #192031;
+  --bg-deep: #080c0f;
+  --accent: #b8e1ec;
+  --accent-2: #617a98;
+  --ink: #0e1317;
+  --text: #ffffff;
+  --text-muted: #cdc8c8;
+  --text-dim: #617a98;
+  --line: rgba(97, 122, 152, 0.22);
+  --star: #e6a400;
+
+  /* Typography */
+  --font-display: "Bebas Neue", "Anton", sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+
+  /* Spacing */
+  --s-4: 4px;
+  --s-8: 8px;
+  --s-12: 12px;
+  --s-16: 16px;
+  --s-20: 20px;
+  --s-24: 24px;
+  --s-32: 32px;
+  --s-48: 48px;
+  --s-56: 56px;
+  --s-64: 64px;
+
+  /* Radius */
+  --r-sm: 10px;
+  --r-md: 15px;
+  --r-lg: 20px;
+  --r-pill: 60px;
+
+  /* Layout */
+  --maxw: 1120px;
+
+  /* Shadow */
+  --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --shadow-accent: 0 12px 40px rgba(184, 225, 236, 0.25);
+}
