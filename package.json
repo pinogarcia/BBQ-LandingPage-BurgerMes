@@ -1,7 +1,7 @@
 {
-  "name": "figma-extractor",
+  "name": "bodecatta-landing",
   "version": "1.0.0",
-  "description": "Extrae design tokens, catálogo de componentes y assets de un proyecto de Figma para guiar la generación de landings.",
+  "description": "Kit de landings Bodecatta para Oxygen (HTML/PHP + CSS + JS), design system compartido y extractor opcional de Figma.",
   "type": "module",
   "engines": {
     "node": ">=20"
