@@ -4,6 +4,7 @@ import { FigmaApi } from "./figma/api.js";
 import { Writer } from "./output/writer.js";
 import { extractVariables } from "./extract/variables.js";
 import { extractStyles } from "./extract/styles.js";
+import { extractRawUsage } from "./extract/rawUsage.js";
 import { extractComponents } from "./extract/components.js";
 import { extractScreens, collectIconNodes } from "./extract/screens.js";
 import { extractAssets, type RenderTarget } from "./extract/assets.js";
@@ -48,10 +49,21 @@ async function main() {
     console.log("  ⚠ Variables API no disponible (plan no-Enterprise o sin scope). Usando Styles.");
   }
 
-  // Fusión: Variables tiene prioridad; Styles complementa lo que falte por nombre.
-  const colors = dedupeColors([...vars.colors, ...styles.colors]);
-  const typography = dedupeTypography(styles.typography);
-  const shadows = dedupeShadows(styles.shadows);
+  // Muchos archivos no formalizan Styles/Variables: reconstruimos el design system "de facto"
+  // desde el uso real de valores en los nodos.
+  const raw = extractRawUsage(file);
+  const namedColorCount = vars.colors.length + styles.colors.length;
+  if (namedColorCount === 0) {
+    console.log(`  ℹ Sin colores/estilos formalizados. Paleta reconstruida por uso: ${raw.colors.length} colores.`);
+  }
+
+  // Fusión: Variables/Styles (con nombre) tienen prioridad; el uso crudo rellena los huecos.
+  // Para colores evitamos duplicar hex ya presentes en la paleta con nombre.
+  const namedColors = dedupeColors([...vars.colors, ...styles.colors]);
+  const namedHexes = new Set(namedColors.map((c) => c.hex.toLowerCase()));
+  const colors = [...namedColors, ...raw.colors.filter((c) => !namedHexes.has(c.hex.toLowerCase()))];
+  const typography = dedupeTypography([...styles.typography, ...raw.typography]);
+  const shadows = dedupeShadows([...styles.shadows, ...raw.shadows]);
 
   // Escalas: inferidas del árbol + números de Variables si los hay.
   const inferred = inferScales(file);
@@ -72,7 +84,8 @@ async function main() {
     const targets: RenderTarget[] = [
       ...components.map((c): RenderTarget => ({ id: c.id, name: c.name, category: "components", formats: ["svg", "png"] })),
       ...icons.map((i): RenderTarget => ({ id: i.id, name: i.name, category: "icons", formats: ["svg"] })),
-      ...screens.map((s): RenderTarget => ({ id: s.id, name: s.name, category: "screens", formats: ["png"] })),
+      // Las pantallas son frames grandes: escala 1 para evitar render timeouts.
+      ...screens.map((s): RenderTarget => ({ id: s.id, name: s.name, category: "screens", formats: ["png"], pngScale: 1 })),
     ];
     const assets = await extractAssets(api, client, writer, targets, config.pngScale);
     assetStats = { downloaded: assets.downloaded, failed: assets.failed };

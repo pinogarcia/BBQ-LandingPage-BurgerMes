@@ -1,12 +1,19 @@
 import "dotenv/config";
 import { z } from "zod";
 
-const schema = z.object({
-  FIGMA_TOKEN: z.string().min(1, "FIGMA_TOKEN es obligatorio (ver .env.example)"),
-  FIGMA_FILE_KEY: z.string().min(1, "FIGMA_FILE_KEY es obligatorio (ver .env.example)"),
-  FIGMA_PNG_SCALE: z.coerce.number().positive().default(2),
-  FIGMA_CONCURRENCY: z.coerce.number().int().positive().default(3),
-});
+const schema = z
+  .object({
+    // Se acepta FIGMA_TOKEN o su alias FIGMA_API_KEY.
+    FIGMA_TOKEN: z.string().min(1).optional(),
+    FIGMA_API_KEY: z.string().min(1).optional(),
+    FIGMA_FILE_KEY: z.string().min(1, "FIGMA_FILE_KEY es obligatorio (ver .env.example)"),
+    FIGMA_PNG_SCALE: z.coerce.number().positive().default(2),
+    FIGMA_CONCURRENCY: z.coerce.number().int().positive().default(3),
+  })
+  .refine((v) => v.FIGMA_TOKEN || v.FIGMA_API_KEY, {
+    message: "Falta el token: define FIGMA_TOKEN (o FIGMA_API_KEY) en .env",
+    path: ["FIGMA_TOKEN"],
+  });
 
 export interface CliFlags {
   noAssets: boolean;
@@ -32,7 +39,7 @@ export function loadConfig(flags: CliFlags) {
   }
   const env = parsed.data;
   return {
-    token: env.FIGMA_TOKEN,
+    token: (env.FIGMA_TOKEN ?? env.FIGMA_API_KEY)!,
     fileKey: flags.fileKeyOverride ?? env.FIGMA_FILE_KEY,
     pngScale: env.FIGMA_PNG_SCALE,
     concurrency: env.FIGMA_CONCURRENCY,
