@@ -30,7 +30,7 @@
   <header class="nav">
     <div class="wrap nav__inner">
       <a href="https://bodecatta.com" class="brand" data-logo aria-label="Bodecatta BBQ">
-        <img src="../../shared/assets/logos/logo-bodecatta.png" alt="Bodecatta BBQ" width="568" height="298" />
+        <img src="https://bodecatta.com/wp-content/uploads/2026/04/Diseno-sin-titulo-10.png" alt="Bodecatta BBQ" width="568" height="298" />
       </a>
       <a class="btn btn--primary" data-btn="nav" href="#">Sucursales</a>
     </div>
@@ -49,7 +49,7 @@
           <p class="micro">Sin app · Rápido · Local</p>
         </div>
         <div class="hero__media">
-          <img class="hero__img" src="../../smash-burger-mex/assets/images/opti/burger-pulled-pork.jpg" alt="Sucursales Bodecatta BBQ" />
+          <img class="hero__img" src="https://bodecatta.com/wp-content/uploads/2026/08/burger-pulled-pork.jpg" alt="Sucursales Bodecatta BBQ" />
         </div>
       </div>
     </section>
@@ -82,7 +82,7 @@
   <footer class="footer">
     <div class="wrap">
       <a href="https://bodecatta.com" class="brand" data-logo aria-label="Bodecatta BBQ">
-        <img src="../../shared/assets/logos/logo-bodecatta.png" alt="Bodecatta BBQ" width="568" height="298" />
+        <img src="https://bodecatta.com/wp-content/uploads/2026/04/Diseno-sin-titulo-10.png" alt="Bodecatta BBQ" width="568" height="298" />
       </a>
       <p class="footer__lead">Encuéntranos en nuestras sucursales de San Luis Potosí</p>
       <p class="footer__copy">© 2026 Bodecatta BBQ</p>
