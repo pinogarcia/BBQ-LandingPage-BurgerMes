@@ -1,19 +1,23 @@
-<!-- BD_DEMO: borrar este bloque y reemplazar con contenido real. -->
 
 # Sucursales Info
 
 | Campo | Valor |
 |-------|-------|
 | **slug** | `sucursales-info` |
-| **goal** | `TODO: una frase — qué debe lograr la landing` |
-| **status** | `briefing` |
+| **goal** | `Permitir a usuarios localizar sucursales, ver horarios y contactar por WhatsApp` |
+| **status** | `coded` |
 
 ## Próximos pasos
 
 1. Completa [`wireframe.md`](wireframe.md) y apruébalo.
 2. Completa [`copy.md`](copy.md) con textos finales.
 3. Llena [`assets.md`](assets.md) y coloca archivos en `assets/` (opcional; faltantes no bloquean el build).
-4. Cuando no quede `BD_DEMO` en README / wireframe / copy, corre **`/crear-landing`**.
+4. Esta landing fue generada automáticamente a partir del brief. Revisa `oxygen/` y `preview/`.
+
+## Notas de generación
+
+- Se usaron imágenes disponibles en el repo: `../../smash-burger-mex/assets/images/opti/burger-pulled-pork.jpg` como hero.
+- Si falta alguna imagen listada en `assets.md`, se dejaron placeholders y puedes reemplazarlas en `assets/images/`.
 
 ## Prompt sugerido (otro chat)
 

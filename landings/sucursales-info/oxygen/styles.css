@@ -1,0 +1,53 @@
+/* Oxygen CSS — Sucursales Info (based on Smash template) */
+
+#bd-sucursales-info {
+  --bg: #0e1317;
+  --bg-elev: #192031;
+  --bg-deep: #080c0f;
+  --accent: #b8e1ec;
+  --accent-2: #617a98;
+  --ink: #0e1317;
+  --text: #ffffff;
+  --text-muted: #cdc8c8;
+  --text-dim: #617a98;
+  --line: rgba(97, 122, 152, 0.22);
+  --font-display: "Bebas Neue", "Anton", sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --s-4: 4px; --s-8: 8px; --s-12: 12px; --s-16: 16px; --s-20: 20px;
+  --s-24: 24px; --s-32: 32px; --s-48: 48px; --s-56: 56px; --s-64: 64px;
+  --r-sm: 10px; --r-md: 15px; --r-lg: 20px; --r-pill: 60px;
+  --maxw: 1120px;
+  --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --shadow-accent: 0 12px 40px rgba(184, 225, 236, 0.25);
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+}
+
+#bd-sucursales-info *, #bd-sucursales-info *::before, #bd-sucursales-info *::after { box-sizing: border-box; margin: 0; padding: 0; }
+#bd-sucursales-info img { max-width: 100%; display: block; }
+#bd-sucursales-info .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s-24); }
+#bd-sucursales-info section { padding: clamp(40px, 6vw, 72px) 0; position: relative; }
+#bd-sucursales-info .eyebrow { font-family: var(--font-body); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 13px; color: var(--accent); margin-bottom: var(--s-12); }
+#bd-sucursales-info .section-title { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; line-height: 0.95; font-size: clamp(28px, 5vw, 56px); }
+#bd-sucursales-info .section-title .hl { color: var(--accent); }
+#bd-sucursales-info .center { text-align: center; }
+
+/* Navbar */
+#bd-sucursales-info .nav { position: sticky; top: 0; z-index: 50; background: rgba(8,12,15,0.82); border-bottom: 1px solid var(--line); }
+#bd-sucursales-info .nav__inner { display:flex; align-items:center; justify-content:space-between; padding:12px 0; }
+#bd-sucursales-info .brand img { width:120px; height:auto; }
+
+/* Hero */
+#bd-sucursales-info .hero { display:block; }
+#bd-sucursales-info .hero__grid { display:grid; grid-template-columns: 1fr 1fr; gap: var(--s-32); align-items:center; }
+#bd-sucursales-info .hero__title { font-family: var(--font-display); font-size: clamp(40px, 6vw, 88px); text-transform: uppercase; }
+#bd-sucursales-info .hero__media { min-height: 300px; border-radius: var(--r-lg); overflow:hidden; background:var(--bg-elev); }
+#bd-sucursales-info .hero__img { width:100%; height:100%; object-fit:cover; }
+
+/* Branch list */
+#bd-sucursales-info .branches__grid { display:grid; gap: var(--s-24); margin-top: var(--s-24); }
+#bd-sucursales-info .branch-card { background: var(--bg-elev); border:1px solid var(--line); padding:var(--s-20); border-radius: var(--r-md); display:flex; align-items:center; justify-content:space-between; gap:var(--s-12); }
+
+/* Final CTA */
+#bd-sucursales-info .final__title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 48px); }

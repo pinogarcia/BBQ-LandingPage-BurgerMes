@@ -1,0 +1,4 @@
+/* Minimal preview CSS: import the oxygen styles */
+@import '../oxygen/styles.css';
+
+body { background: #fff; }
