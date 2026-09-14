@@ -1,0 +1,391 @@
+/* =============================================================================
+  Oxygen CSS — Bodecatta Hamburguesa de Guacamole
+   Cada bloque: --- SECCIÓN N --- (mismo número que el HTML)
+   ============================================================================= */
+
+/* --- SECCIÓN 0: TOKENS / BASE --- */
+#bd-hamburguesa-de-guacamole {
+  --bg: #0e1317;
+  --bg-elev: #192031;
+  --bg-deep: #080c0f;
+  --accent: #b8e1ec;
+  --accent-2: #617a98;
+  --ink: #0e1317;
+  --text: #ffffff;
+  --text-muted: #cdc8c8;
+  --text-dim: #617a98;
+  --line: rgba(97, 122, 152, 0.22);
+  --font-display: "Bebas Neue", "Anton", sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --s-4: 4px; --s-8: 8px; --s-12: 12px; --s-16: 16px; --s-20: 20px;
+  --s-24: 24px; --s-32: 32px; --s-48: 48px; --s-56: 56px; --s-64: 64px;
+  --r-sm: 10px; --r-md: 15px; --r-lg: 20px; --r-pill: 60px;
+  --maxw: 1120px;
+  --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --shadow-accent: 0 12px 40px rgba(184, 225, 236, 0.25);
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  text-align: left;
+}
+#bd-hamburguesa-de-guacamole *,
+#bd-hamburguesa-de-guacamole *::before,
+#bd-hamburguesa-de-guacamole *::after { box-sizing: border-box; margin: 0; padding: 0; }
+#bd-hamburguesa-de-guacamole img { max-width: 100%; display: block; }
+#bd-hamburguesa-de-guacamole a { color: inherit; text-decoration: none; }
+#bd-hamburguesa-de-guacamole .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--s-24); }
+#bd-hamburguesa-de-guacamole section { padding: clamp(56px, 9vw, 112px) 0; position: relative; }
+#bd-hamburguesa-de-guacamole .eyebrow {
+  font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 3px; font-size: 13px; color: var(--accent); margin-bottom: var(--s-12);
+}
+#bd-hamburguesa-de-guacamole .section-title {
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; line-height: 0.95; font-size: clamp(38px, 6vw, 68px);
+}
+#bd-hamburguesa-de-guacamole .section-title .hl { color: var(--accent); }
+#bd-hamburguesa-de-guacamole .center { text-align: center; }
+#bd-hamburguesa-de-guacamole .btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-body); font-weight: 700; font-size: 17px; letter-spacing: 0.3px;
+  padding: 16px 30px; border-radius: var(--r-pill); border: none; cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  white-space: nowrap;
+}
+#bd-hamburguesa-de-guacamole .btn--primary { background: var(--accent); color: var(--ink); box-shadow: var(--shadow-accent); }
+#bd-hamburguesa-de-guacamole .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(184,225,236,0.4); }
+#bd-hamburguesa-de-guacamole .btn--lg { font-size: 20px; padding: 20px 42px; }
+
+/* --- SECCIÓN 1: NAV --- */
+#bd-hamburguesa-de-guacamole .nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(8, 12, 15, 0.82); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+#bd-hamburguesa-de-guacamole .nav__inner {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-16);
+  padding-top: 15px; padding-bottom: 15px;
+}
+#bd-hamburguesa-de-guacamole .nav .brand {
+  display: flex; align-items: center;
+  width: 120px; flex: 0 0 120px; max-width: 120px;
+  line-height: 0; overflow: hidden;
+}
+#bd-hamburguesa-de-guacamole .nav .brand img {
+  display: block; width: 120px; max-width: 120px;
+  height: auto; max-height: 100%;
+  object-fit: contain; object-position: left center;
+}
+#bd-hamburguesa-de-guacamole .nav .btn { padding: 11px 22px; font-size: 15px; flex: 0 0 auto; }
+
+/* --- SECCIÓN 2: HERO --- */
+#bd-hamburguesa-de-guacamole .hero { padding-top: 0; overflow: hidden; }
+#bd-hamburguesa-de-guacamole .hero__grid {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: var(--s-48); align-items: center;
+}
+#bd-hamburguesa-de-guacamole .hero__title {
+  font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; line-height: 0.9; font-size: clamp(58px, 9vw, 118px);
+}
+#bd-hamburguesa-de-guacamole .hero__title .hl { color: var(--accent); display: block; }
+#bd-hamburguesa-de-guacamole .hero__hook { font-size: clamp(18px, 2.2vw, 22px); color: var(--text-muted); max-width: 30ch; margin: var(--s-24) 0; }
+#bd-hamburguesa-de-guacamole .hero__hook-combo { display: inline-block; margin-top: var(--s-8); color: var(--accent); font-weight: 700; }
+#bd-hamburguesa-de-guacamole .price-anchor { display: inline-flex; align-items: baseline; gap: 10px; margin-bottom: var(--s-24); }
+#bd-hamburguesa-de-guacamole .price-anchor .label { color: var(--text-dim); font-size: 15px; text-transform: uppercase; letter-spacing: 2px; }
+#bd-hamburguesa-de-guacamole .price-anchor .amount { font-family: var(--font-display); font-size: 56px; color: var(--accent); letter-spacing: 1px; }
+#bd-hamburguesa-de-guacamole .hero__cta { display: flex; flex-wrap: wrap; gap: var(--s-16); align-items: center; }
+#bd-hamburguesa-de-guacamole .micro { font-size: 14px; color: var(--text-dim); margin-top: var(--s-16); }
+#bd-hamburguesa-de-guacamole .micro b { color: var(--accent); }
+#bd-hamburguesa-de-guacamole .hero__media {
+  min-height: 380px; border-radius: var(--r-lg); overflow: hidden;
+  box-shadow: var(--shadow-soft); background: var(--bg-elev);
+}
+#bd-hamburguesa-de-guacamole .hero__img { width: 100%; height: 100%; min-height: 380px; object-fit: cover; display: block; }
+#bd-hamburguesa-de-guacamole .card__img { width: 100%; height: 230px; object-fit: cover; border-bottom: 1px solid var(--line); }
+
+/* --- SECCIÓN 3: SOCIAL --- */
+#bd-hamburguesa-de-guacamole .social { background: var(--bg-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+#bd-hamburguesa-de-guacamole .social__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-24);
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+}
+#bd-hamburguesa-de-guacamole .social__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+#bd-hamburguesa-de-guacamole .social__item .big {
+  font-family: var(--font-display);
+  font-size: 55px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+#bd-hamburguesa-de-guacamole .social__item .sub { color: var(--text-muted); font-size: 19px; }
+#bd-hamburguesa-de-guacamole .social__item .stars {
+  font-size: 55px;
+  line-height: 1.1;
+  color: var(--accent);
+  letter-spacing: 2px;
+}
+#bd-hamburguesa-de-guacamole .stars { color: var(--accent); letter-spacing: 2px; }
+
+/* --- SECCIÓN 4: COMBO --- */
+#bd-hamburguesa-de-guacamole .combo__head { margin-bottom: var(--s-48); }
+#bd-hamburguesa-de-guacamole .combo__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--s-24); max-width: 760px; margin: 0 auto; }
+#bd-hamburguesa-de-guacamole .card {
+  background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--r-lg);
+  overflow: hidden; transition: transform 0.2s ease, border-color 0.2s ease;
+}
+#bd-hamburguesa-de-guacamole .card:hover { transform: translateY(-4px); border-color: rgba(184,225,236,0.4); }
+#bd-hamburguesa-de-guacamole .card__body { padding: var(--s-24); }
+#bd-hamburguesa-de-guacamole .card__body h3 { font-family: var(--font-display); font-size: 28px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+#bd-hamburguesa-de-guacamole .card__body p { color: var(--text-muted); font-size: 15px; }
+#bd-hamburguesa-de-guacamole .combo__cta { margin-top: var(--s-48); text-align: center; }
+#bd-hamburguesa-de-guacamole .combo__cta .price-line { font-family: var(--font-display); font-size: 32px; letter-spacing: 1px; margin-bottom: var(--s-16); }
+#bd-hamburguesa-de-guacamole .combo__cta .price-line b { color: var(--accent); }
+
+/* --- SECCIÓN 5: CARRUSEL --- */
+#bd-hamburguesa-de-guacamole .burgers { background: var(--bg-deep); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+#bd-hamburguesa-de-guacamole .carousel { position: relative; margin-top: var(--s-48); }
+#bd-hamburguesa-de-guacamole .carousel__track {
+  display: flex; gap: var(--s-16); overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 4px clamp(24px, 8vw, 120px); scrollbar-width: none;
+}
+#bd-hamburguesa-de-guacamole .carousel__track::-webkit-scrollbar { display: none; }
+#bd-hamburguesa-de-guacamole .bcard {
+  flex: 0 0 300px; scroll-snap-align: center; background: var(--bg-elev);
+  border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden;
+  display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease;
+}
+#bd-hamburguesa-de-guacamole .bcard:hover { transform: translateY(-4px); border-color: rgba(184, 225, 236, 0.4); }
+#bd-hamburguesa-de-guacamole .bcard__img {
+  height: 150px; display: grid; place-items: center; font-size: 72px;
+  background: radial-gradient(120% 120% at 30% 20%, rgba(184, 225, 236, 0.14), transparent 60%), linear-gradient(160deg, #23303f, #0d1319);
+  border-bottom: 1px solid var(--line); overflow: hidden;
+}
+#bd-hamburguesa-de-guacamole .bcard__img img { width: 100%; height: 100%; object-fit: cover; }
+#bd-hamburguesa-de-guacamole .bcard__body { padding: var(--s-20); display: flex; flex-direction: column; flex: 1; }
+#bd-hamburguesa-de-guacamole .bcard__body h3 { font-family: var(--font-display); font-weight: 400; font-size: 26px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+#bd-hamburguesa-de-guacamole .bcard__body p { color: var(--text-muted); font-size: 14px; line-height: 1.45; flex: 1; margin-bottom: var(--s-16); }
+#bd-hamburguesa-de-guacamole .bcard__foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s-12); }
+#bd-hamburguesa-de-guacamole .bcard__price { font-family: var(--font-display); font-size: 30px; color: var(--accent); letter-spacing: 1px; }
+#bd-hamburguesa-de-guacamole .bcard__cta { padding: 10px 20px; font-size: 15px; box-shadow: none; }
+#bd-hamburguesa-de-guacamole .carousel__nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: var(--ink);
+  border: none; cursor: pointer; font-size: 28px; line-height: 1; display: grid; place-items: center;
+  box-shadow: var(--shadow-soft); z-index: 2; transition: transform 0.15s ease;
+}
+#bd-hamburguesa-de-guacamole .carousel__nav:hover { transform: translateY(-50%) scale(1.08); }
+#bd-hamburguesa-de-guacamole .carousel__nav--prev { left: clamp(8px, 3vw, 40px); }
+#bd-hamburguesa-de-guacamole .carousel__nav--next { right: clamp(8px, 3vw, 40px); }
+
+/* --- SECCIÓN 6: STEPS --- */
+#bd-hamburguesa-de-guacamole .steps__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-24); }
+#bd-hamburguesa-de-guacamole .step { position: relative; padding: var(--s-32); background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--r-lg); }
+#bd-hamburguesa-de-guacamole .step__num {
+  width: 52px; height: 52px; border-radius: 50%; background: var(--accent); color: var(--ink);
+  font-family: var(--font-display); font-size: 30px; display: grid; place-items: center; margin-bottom: var(--s-16);
+}
+#bd-hamburguesa-de-guacamole .step h3 { font-family: var(--font-display); font-size: 24px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+#bd-hamburguesa-de-guacamole .step p { color: var(--text-muted); font-size: 15px; }
+
+/* --- SECCIÓN 7: TESTIMONIOS --- */
+#bd-hamburguesa-de-guacamole .testi { background: var(--accent); color: var(--ink); }
+#bd-hamburguesa-de-guacamole .testi .eyebrow { color: var(--accent-2); }
+#bd-hamburguesa-de-guacamole .testi .section-title { color: var(--ink); }
+#bd-hamburguesa-de-guacamole .testi__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-24); margin-top: var(--s-48); }
+#bd-hamburguesa-de-guacamole .quote {
+  background: rgba(14, 19, 23, 0.06); border: 1px solid rgba(14, 19, 23, 0.12);
+  border-radius: var(--r-md); padding: var(--s-32);
+}
+#bd-hamburguesa-de-guacamole .quote .stars { color: #e6a400; letter-spacing: 2px; font-size: 18px; }
+#bd-hamburguesa-de-guacamole .quote p { margin: var(--s-12) 0; font-size: 16px; line-height: 1.55; }
+#bd-hamburguesa-de-guacamole .quote cite { font-style: normal; font-weight: 700; color: var(--accent-2); }
+
+/* --- SECCIÓN 8: FAQ --- */
+#bd-hamburguesa-de-guacamole .faq__list { max-width: 780px; margin: var(--s-48) auto 0; }
+#bd-hamburguesa-de-guacamole .faq__item { border-bottom: 1px solid var(--line); }
+#bd-hamburguesa-de-guacamole .faq__q {
+  width: 100%; text-align: left; background: none; border: none; color: var(--text);
+  font-family: var(--font-body); font-weight: 600; font-size: 19px; cursor: pointer;
+  padding: var(--s-24) 0; display: flex; justify-content: space-between; gap: 16px; align-items: center;
+}
+#bd-hamburguesa-de-guacamole .faq__q .icon { color: var(--accent); font-size: 26px; transition: transform 0.2s ease; flex: none; }
+#bd-hamburguesa-de-guacamole .faq__item.open .faq__q .icon { transform: rotate(45deg); }
+#bd-hamburguesa-de-guacamole .faq__a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-muted); }
+#bd-hamburguesa-de-guacamole .faq__a p { padding-bottom: var(--s-24); font-size: 16px; }
+
+/* --- SECCIÓN 9: CTA FINAL --- */
+#bd-hamburguesa-de-guacamole .final { text-align: center; background: radial-gradient(80% 120% at 50% 0%, #16202b, var(--bg-deep)); border-top: 1px solid var(--line); }
+#bd-hamburguesa-de-guacamole .final__title { font-family: var(--font-display); font-size: clamp(44px, 7vw, 84px); letter-spacing: 2px; text-transform: uppercase; line-height: 0.95; }
+#bd-hamburguesa-de-guacamole .final__price { color: var(--text-muted); font-size: 18px; margin: var(--s-16) 0 var(--s-32); }
+#bd-hamburguesa-de-guacamole .final__price b { color: var(--accent); }
+#bd-hamburguesa-de-guacamole .final__micro { margin-top: var(--s-20); color: var(--text-dim); }
+
+/* --- SECCIÓN 10: FOOTER --- */
+#bd-hamburguesa-de-guacamole .footer { background: var(--bg-deep); border-top: 1px solid var(--line); padding: var(--s-48) 0; text-align: center; }
+#bd-hamburguesa-de-guacamole .footer .brand {
+  display: inline-flex; align-items: center; justify-content: center;
+  line-height: 0; margin-bottom: var(--s-16);
+}
+#bd-hamburguesa-de-guacamole .footer .brand img {
+  display: block; width: min(220px, 55vw); height: auto;
+  object-fit: contain; margin: 0 auto;
+}
+#bd-hamburguesa-de-guacamole .footer__lead { color: var(--text-muted); font-size: 15px; margin-bottom: var(--s-32); }
+#bd-hamburguesa-de-guacamole .footer__copy { color: var(--text-dim); font-size: 14px; margin-top: var(--s-32); }
+#bd-hamburguesa-de-guacamole .branches { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-20); max-width: 980px; margin: 0 auto; text-align: left; }
+#bd-hamburguesa-de-guacamole .branch { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--line); border-radius: var(--r-md); padding: var(--s-20); }
+#bd-hamburguesa-de-guacamole .branch h4 { font-family: var(--font-display); font-weight: 400; font-size: 22px; letter-spacing: 1px; color: var(--text); margin-bottom: var(--s-8); }
+#bd-hamburguesa-de-guacamole .branch p { color: var(--text-dim); font-size: 13px; line-height: 1.5; margin-bottom: var(--s-12); }
+#bd-hamburguesa-de-guacamole .branch__wa { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-weight: 600; font-size: 14px; }
+#bd-hamburguesa-de-guacamole .branch__wa:hover { text-decoration: underline; }
+
+/* --- SECCIÓN 11: STICKY CTA --- */
+#bd-hamburguesa-de-guacamole .sticky-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: rgba(8, 12, 15, 0.92); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--line); display: none;
+}
+#bd-hamburguesa-de-guacamole .sticky-cta .btn { width: 100%; justify-content: center; }
+
+/* --- SECCIÓN 12: MODAL SUCURSAL --- */
+#bd-hamburguesa-de-guacamole .branch-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+#bd-hamburguesa-de-guacamole .branch-modal[hidden] {
+  display: none !important;
+}
+#bd-hamburguesa-de-guacamole .branch-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 12, 15, 0.72);
+  backdrop-filter: blur(6px);
+}
+#bd-hamburguesa-de-guacamole .branch-modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  max-height: min(90vh, 640px);
+  overflow: auto;
+  background: var(--bg-elev);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: clamp(20px, 4vw, 40px);
+  box-shadow: var(--shadow-soft);
+}
+#bd-hamburguesa-de-guacamole .branch-modal__x {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+#bd-hamburguesa-de-guacamole .branch-modal__x:hover { color: var(--accent); }
+#bd-hamburguesa-de-guacamole .branch-modal__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(28px, 5vw, 42px);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0 32px 8px 0;
+}
+#bd-hamburguesa-de-guacamole .branch-modal__sub {
+  color: var(--text-dim);
+  font-size: 15px;
+  margin: 0 0 20px;
+}
+#bd-hamburguesa-de-guacamole .branch-modal__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 700px) {
+  #bd-hamburguesa-de-guacamole .branch-modal__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+#bd-hamburguesa-de-guacamole .branch-modal__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  text-align: left;
+  padding: 18px 16px;
+  border-radius: var(--r-md);
+  border: 1.5px solid rgba(97, 122, 152, 0.35);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+#bd-hamburguesa-de-guacamole .branch-modal__btn:hover,
+#bd-hamburguesa-de-guacamole .branch-modal__btn.is-selected {
+  border-color: var(--accent);
+  background: rgba(184, 225, 236, 0.08);
+  transform: translateY(-2px);
+}
+#bd-hamburguesa-de-guacamole .branch-modal__name {
+  font-weight: 700;
+  font-size: 16px;
+}
+#bd-hamburguesa-de-guacamole .branch-modal__hint {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+body.bd-modal-open { overflow: hidden; }
+
+/* --- SECCIÓN 13: REVEAL + RESPONSIVE --- */
+#bd-hamburguesa-de-guacamole .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+#bd-hamburguesa-de-guacamole .reveal.in { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  #bd-hamburguesa-de-guacamole .hero__grid { grid-template-columns: 1fr; }
+  #bd-hamburguesa-de-guacamole .hero__media { order: -1; min-height: 300px; }
+  #bd-hamburguesa-de-guacamole .social__grid,
+  #bd-hamburguesa-de-guacamole .combo__grid,
+  #bd-hamburguesa-de-guacamole .steps__grid,
+  #bd-hamburguesa-de-guacamole .testi__grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  #bd-hamburguesa-de-guacamole .branches { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  #bd-hamburguesa-de-guacamole .nav .btn { display: none; }
+  #bd-hamburguesa-de-guacamole .sticky-cta { display: block; }
+  #bd-hamburguesa-de-guacamole { padding-bottom: 88px; }
+  #bd-hamburguesa-de-guacamole .hero__cta .btn { width: 100%; justify-content: center; }
+  #bd-hamburguesa-de-guacamole .carousel__nav { display: none; }
+  #bd-hamburguesa-de-guacamole .bcard { flex-basis: 82vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #bd-hamburguesa-de-guacamole .reveal { opacity: 1; transform: none; transition: none; }
+}
